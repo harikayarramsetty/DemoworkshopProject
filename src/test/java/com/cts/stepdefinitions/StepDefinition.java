@@ -5,12 +5,13 @@ import java.io.IOException;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
-import com.cts.base.LauchWebBrowser;
+import com.cts.base.LaunchWebBrowser;
 import com.cts.pages.ApparelAndShoesPage;
 import com.cts.pages.DigitalDownloadsPage;
 import com.cts.pages.ElectronicsPage;
 import com.cts.pages.GiftCardspage;
 import com.cts.pages.Jewellrypage;
+import com.cts.pages.LoginPage;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -23,24 +24,24 @@ public class StepDefinition {
 	@Given("I have a browser with demoworkshop page")
 	public void i_have_a_browser_with_demoworkshop_page() {
 		
-		LauchWebBrowser.start();
-		this.driver= LauchWebBrowser.driver;
+		LaunchWebBrowser.start("ch");
+		this.driver= LaunchWebBrowser.driver;
 		
 	}
 
 	//1st scenario
 	@When("I enter username as {string} and password as {string} and I go to electronics and click on phone and get the details of the product")
 	public void i_enter_username_as_and_password_as_and_I_go_to_electronics_and_click_on_phone_and_get_the_details_of_the_product(String username, String password) throws IOException {
-	    
+	    LoginPage login = new LoginPage(driver);
 		ElectronicsPage electronics = new ElectronicsPage(driver);
 		//click on login 
-		electronics.clickOnLogin();
+		login.clickOnLogin();
 		//enter user name
-		electronics.enterUsername(username);
+		login.enterUsername(username);
 		//enter password
-		electronics.enterPassword(password);
+		login.enterPassword(password);
 		//click on login button
-		electronics.clickOnLoginButton();
+		login.clickOnLoginButton();
 		
 		//click on electronics
 		electronics.clickOnElectronics();
@@ -62,7 +63,7 @@ public class StepDefinition {
 		//comparing the actual and expected text
 		Assert.assertEquals("Ideal for everyday use.", actText);
 		
-	    LauchWebBrowser.endBrowser();
+	    LaunchWebBrowser.endBrowser();
 	
 	}
 
@@ -98,7 +99,7 @@ public class StepDefinition {
 		//comparing the actual and expected quantity
 		Assert.assertEquals(expQty, actQty);
 		
-		LauchWebBrowser.endBrowser();
+		LaunchWebBrowser.endBrowser();
 
 	}
 
@@ -107,16 +108,16 @@ public class StepDefinition {
 	@When("I enter username as {string} and password as {string} and I go to digital downloads and change the sort by to {string}")
 	public void i_enter_username_as_and_password_as_and_I_go_to_digital_downloads_and_change_the_sort_by_to(String username, String password, String sort) {
 	    
-		
+		LoginPage login = new LoginPage(driver);
 		ElectronicsPage electronics = new ElectronicsPage(driver);
 		//click on login
-		electronics.clickOnLogin();
+		login.clickOnLogin();
 		//enter username
-		electronics.enterUsername(username);
+		login.enterUsername(username);
 		//enter password
-		electronics.enterPassword(password);
+		login.enterPassword(password);
 		//click on login button
-		electronics.clickOnLoginButton();
+		login.clickOnLoginButton();
 		
 		DigitalDownloadsPage digital = new DigitalDownloadsPage(driver);
 		//click on digital downloads
@@ -152,7 +153,7 @@ public class StepDefinition {
 	  		Assert.fail("not sorted");
 	  	}
 	  	
-	  	LauchWebBrowser.endBrowser();
+	  	LaunchWebBrowser.endBrowser();
 	    
 	}
 
@@ -162,15 +163,16 @@ public class StepDefinition {
 	@When("I enter username as {string} and password as {string} and I go to jewelry change the filter by price")
 	public void i_enter_username_as_and_password_as_and_I_go_to_jewelry_change_the_filter_by_price(String username, String password) {
 	    
+		LoginPage login = new LoginPage(driver);
 		ElectronicsPage electronics = new ElectronicsPage(driver);
 		//click on login
-		electronics.clickOnLogin();
+		login.clickOnLogin();
 		//enter username
-		electronics.enterUsername(username);
+		login.enterUsername(username);
 		//enter password
-		electronics.enterPassword(password);
+		login.enterPassword(password);
 		//click on login button
-		electronics.clickOnLoginButton();
+		login.clickOnLoginButton();
 		
 		
 		Jewellrypage jewelry = new Jewellrypage(driver);
@@ -197,7 +199,7 @@ public class StepDefinition {
 			Assert.fail("Do not filtered by value");
 		}
 		
-		LauchWebBrowser.endBrowser();
+		LaunchWebBrowser.endBrowser();
 		
 	 }
 
@@ -207,14 +209,15 @@ public class StepDefinition {
 	@When("I enter username as {string} and password as {string} and I go to gift cards change the view as to {string}")
 	public void i_enter_username_as_and_password_as_and_I_go_to_gift_cards_change_the_view_as_to(String username, String password, String list) {
 		ElectronicsPage electronics = new ElectronicsPage(driver);
+		LoginPage login = new LoginPage(driver);
 		//click on login
-		electronics.clickOnLogin();
+		login.clickOnLogin();
 		//enter username
-		electronics.enterUsername(username);
+		login.enterUsername(username);
 		//enter password
-		electronics.enterPassword(password);
+		login.enterPassword(password);
 		//click on login button
-		electronics.clickOnLoginButton();
+		login.clickOnLoginButton();
 		
 		GiftCardspage giftCard = new GiftCardspage(driver);
 		//click on gift cards
@@ -229,11 +232,16 @@ public class StepDefinition {
 	  
 		GiftCardspage giftCard = new GiftCardspage(driver);
 		//storing the actual text in a variable
-		String actItem = giftCard.getGiftCardName();
+		//String actItem = giftCard.getGiftCardName();
 		//comparing the actal and excepted text
-		Assert.assertEquals("$5 Virtual Gift Card", actItem);
+		//Assert.assertEquals("$5 Virtual Gift Card", actItem);
+		//LauchWebBrowser.endBrowser();
 		
-		LauchWebBrowser.endBrowser();
+		
+		String actAttTag = giftCard.list();
+		Assert.assertEquals("http://demowebshop.tricentis.com/5-virtual-gift-card", actAttTag);
+		
+		
 		
 	}
 	

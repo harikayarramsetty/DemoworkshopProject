@@ -26,9 +26,16 @@ public class GiftCardspage {
 		viewSelect.selectByVisibleText(list);
 	}
 	
-	public String getGiftCardName()
+	/*
+	 * public String getGiftCardName() { return
+	 * driver.findElement(By.linkText("$5 Virtual Gift Card")).getText(); }
+	 */
+	
+	public  String list()
 	{
-		return driver.findElement(By.linkText("$5 Virtual Gift Card")).getText();
+		String attTag = driver.findElement(By.xpath("//a[text()='$5 Virtual Gift Card']")).getAttribute("href");
+		return attTag;
+		
 	}
 
 }

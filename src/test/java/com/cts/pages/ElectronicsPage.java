@@ -7,10 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 public class ElectronicsPage {
 	
-	private  By loginLoc = By.linkText("Log in"); 
-	private By usernameLoc = By.id("Email");
-	private By passwordLoc = By.id("Password");
-	private By loginButtonLoc = By.xpath("//input[@value='Log in']");
+	
 	private By electronicsLoc = By.xpath("(//a[contains(text(),'Electronics')])[1]");
 	private By cellphonesLoc = By.xpath("(//a[contains(text(),'Cell phones')])[4]");
 	private By smartPhonesLoc = By.xpath("(//a[text()='Smartphone'])");
@@ -23,25 +20,6 @@ public class ElectronicsPage {
 		this.driver=driver;
 	}
 	
-	public  void clickOnLogin()
-	{
-		driver.findElement(loginLoc).click();
-	}
-	
-	public void enterUsername(String username)
-	{
-		driver.findElement(usernameLoc).sendKeys(username);
-	}
-	
-	public void enterPassword(String password)
-	{
-		driver.findElement(passwordLoc).sendKeys(password);
-	}
-	
-	public void clickOnLoginButton()
-	{
-		driver.findElement(loginButtonLoc).click();
-	}
 	
 	public void clickOnElectronics()
 	{
