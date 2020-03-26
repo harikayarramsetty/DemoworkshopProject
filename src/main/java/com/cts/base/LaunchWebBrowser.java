@@ -17,17 +17,17 @@ public class LaunchWebBrowser {
 	{
 		if(browsername.equalsIgnoreCase("ff"))
 		{
-			System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver", "src/test/resources/driver/geckodriver.exe");
 			driver = new FirefoxDriver();	
 		}
 		else if(browsername.equalsIgnoreCase("ie"))
 		{
-			System.setProperty("webdriver.ie.driver", "drivers/IEDriverServer.exe");
+			System.setProperty("webdriver.ie.driver", "src/test/resources/driver//IEDriverServer.exe");
 			driver = new ChromeDriver();
 		}
 		else
 		{
-			System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "src/test/resources/driver/chromedriver.exe");
 			driver = new ChromeDriver();
 		}
 		driver.manage().window().maximize();

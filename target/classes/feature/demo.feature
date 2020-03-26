@@ -36,7 +36,7 @@ Examples:
 |username|password|
 |mohithayarramsetty@gmail.com|yarramsetty|
 
-@valid
+
 Scenario Outline: View as list
 When I enter username as '<username>' and password as '<password>' and I go to gift cards change the view as to 'List'
 Then It should be changed to list      
