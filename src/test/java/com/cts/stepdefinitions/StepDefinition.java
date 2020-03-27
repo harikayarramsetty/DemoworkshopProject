@@ -62,7 +62,6 @@ public class StepDefinition {
 		ElectronicsPage electronics = new ElectronicsPage(driver);
 		//click on login 
 		login.clickOnLogin();
-		
 		//enter user name
 		login.enterUsername(data[0][0]);
 		//enter password
