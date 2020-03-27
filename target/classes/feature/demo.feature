@@ -6,13 +6,10 @@ Feature: In order to buy products
 Background: 
 Given I have a browser with demoworkshop page
 
-        
-Scenario Outline: Details of phone
-When I enter username as '<username>' and password as '<password>' and I go to electronics and click on phone and get the details of the product
+       
+Scenario: Details of phone
+When I enter login details from excel "src/test/resources/resources/DemowebShop.xlsx" with sheetname "loginDetails" 
 Then I should get the details of phone
-Examples: 
-|username|password|
-|mohithayarramsetty@gmail.com|yarramsetty|
 
 
 Scenario: Setting the quantity of the product to 2
@@ -26,6 +23,7 @@ Then It should be sorted to high to low
 Examples: 
 |username|password|
 |mohithayarramsetty@gmail.com|yarramsetty|
+|trustxd@gmail.com|trustXD|
 
 
 
@@ -35,6 +33,7 @@ Then It should be change to 700-3000 filter
 Examples: 
 |username|password|
 |mohithayarramsetty@gmail.com|yarramsetty|
+|trustxd@gmail.com|trustXD|
 
 
 Scenario Outline: View as list
@@ -43,7 +42,4 @@ Then It should be changed to list
 Examples: 
 |username|password|
 |mohithayarramsetty@gmail.com|yarramsetty|
-
-
-
-
+|trustxd@gmail.com|trustXD|

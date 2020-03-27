@@ -1,8 +1,12 @@
 package com.cts.stepdefinitions;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 
 import org.junit.Assert;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import com.cts.base.LaunchWebBrowser;
@@ -12,7 +16,9 @@ import com.cts.pages.ElectronicsPage;
 import com.cts.pages.GiftCardspage;
 import com.cts.pages.Jewellrypage;
 import com.cts.pages.LoginPage;
+import com.cts.utils.ReadExcel;
 
+import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -21,25 +27,45 @@ public class StepDefinition {
 	
 	WebDriver driver;
 	
+	@After
+	public void endBrowser()
+	{
+		Date date = new Date();
+		String dateStr = date.toString().replace(":", "-");
+		
+		//taking screenshot
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File file = ts.getScreenshotAs(OutputType.FILE);
+		file.renameTo(new File("src/test/resources/screenshots/image" +dateStr+ ".png"));
+		
+		//closing the browser
+		driver.quit();
+	}
+
+	
 	@Given("I have a browser with demoworkshop page")
 	public void i_have_a_browser_with_demoworkshop_page() {
-		
+		//launching the web browser
 		LaunchWebBrowser.start("ch");
 		this.driver= LaunchWebBrowser.driver;
 		
 	}
 
 	//1st scenario
-	@When("I enter username as {string} and password as {string} and I go to electronics and click on phone and get the details of the product")
-	public void i_enter_username_as_and_password_as_and_I_go_to_electronics_and_click_on_phone_and_get_the_details_of_the_product(String username, String password) throws IOException {
-	    LoginPage login = new LoginPage(driver);
+	
+	@When("I enter login details from excel {string} with sheetname {string}")
+	public void i_enter_login_details_from_excel_with_sheetname(String fileName, String sheetName) throws IOException {
+		//fetching the details from excel
+		String data[][] = ReadExcel.getSheetIntoStringArray(fileName, sheetName);
+		
+		LoginPage login = new LoginPage(driver);
 		ElectronicsPage electronics = new ElectronicsPage(driver);
 		//click on login 
 		login.clickOnLogin();
 		//enter user name
-		login.enterUsername(username);
+		login.enterUsername(data[0][0]);
 		//enter password
-		login.enterPassword(password);
+		login.enterPassword(data[0][1]);
 		//click on login button
 		login.clickOnLoginButton();
 		
@@ -50,10 +76,10 @@ public class StepDefinition {
 		//click on smart phones
 		electronics.clickOnSmartphones();
 		//getting the details of the product
-		electronics.getDetails("p");
+		electronics.getDetails("p");	
 		
 	}
-	
+
 	@Then("I should get the details of phone")
 	public void i_should_get_the_details_of_phone() {
 		
@@ -62,9 +88,7 @@ public class StepDefinition {
 		String actText = electronics.electronicsAssertion();
 		//comparing the actual and expected text
 		Assert.assertEquals("Ideal for everyday use.", actText);
-		
-	    LaunchWebBrowser.endBrowser();
-	
+			
 	}
 
 	//2nd scenario
@@ -99,8 +123,6 @@ public class StepDefinition {
 		//comparing the actual and expected quantity
 		Assert.assertEquals(expQty, actQty);
 		
-		LaunchWebBrowser.endBrowser();
-
 	}
 
 		//3rd scenario
@@ -153,7 +175,6 @@ public class StepDefinition {
 	  		Assert.fail("not sorted");
 	  	}
 	  	
-	  	LaunchWebBrowser.endBrowser();
 	    
 	}
 
@@ -198,9 +219,7 @@ public class StepDefinition {
 		} else {
 			Assert.fail("Do not filtered by value");
 		}
-		
-		LaunchWebBrowser.endBrowser();
-		
+				
 	 }
 
 
@@ -231,12 +250,6 @@ public class StepDefinition {
 	public void it_should_be_changed_to_list() {
 	  
 		GiftCardspage giftCard = new GiftCardspage(driver);
-		//storing the actual text in a variable
-		//String actItem = giftCard.getGiftCardName();
-		//comparing the actal and excepted text
-		//Assert.assertEquals("$5 Virtual Gift Card", actItem);
-		//LauchWebBrowser.endBrowser();
-		
 		
 		String actAttTag = giftCard.list();
 		Assert.assertEquals("http://demowebshop.tricentis.com/5-virtual-gift-card", actAttTag);
