@@ -51,8 +51,8 @@ public class StepDefinition {
 		
 	}
 
-	//1st scenario
 	
+	//1st scenario
 	@When("I enter login details from excel {string} with sheetname {string}")
 	public void i_enter_login_details_from_excel_with_sheetname(String fileName, String sheetName) throws IOException {
 		//fetching the details from excel
@@ -92,7 +92,6 @@ public class StepDefinition {
 	}
 
 	//2nd scenario
-	
 	@When("I  go to apparel and shoes and click on any product and change the quantity to {string}")
 	public void i_go_to_apparel_and_shoes_and_click_on_any_product_and_change_the_quantity_to(String qty) {
 	    
@@ -125,13 +124,11 @@ public class StepDefinition {
 		
 	}
 
-		//3rd scenario
-	
+	//3rd scenario
 	@When("I enter username as {string} and password as {string} and I go to digital downloads and change the sort by to {string}")
 	public void i_enter_username_as_and_password_as_and_I_go_to_digital_downloads_and_change_the_sort_by_to(String username, String password, String sort) {
 	    
 		LoginPage login = new LoginPage(driver);
-		ElectronicsPage electronics = new ElectronicsPage(driver);
 		//click on login
 		login.clickOnLogin();
 		//enter username
@@ -180,12 +177,10 @@ public class StepDefinition {
 
 
 	//4th scenario
-	
 	@When("I enter username as {string} and password as {string} and I go to jewelry change the filter by price")
 	public void i_enter_username_as_and_password_as_and_I_go_to_jewelry_change_the_filter_by_price(String username, String password) {
 	    
 		LoginPage login = new LoginPage(driver);
-		ElectronicsPage electronics = new ElectronicsPage(driver);
 		//click on login
 		login.clickOnLogin();
 		//enter username
@@ -224,10 +219,8 @@ public class StepDefinition {
 
 
 	//5th scenario
-
 	@When("I enter username as {string} and password as {string} and I go to gift cards change the view as to {string}")
 	public void i_enter_username_as_and_password_as_and_I_go_to_gift_cards_change_the_view_as_to(String username, String password, String list) {
-		ElectronicsPage electronics = new ElectronicsPage(driver);
 		LoginPage login = new LoginPage(driver);
 		//click on login
 		login.clickOnLogin();
@@ -241,19 +234,24 @@ public class StepDefinition {
 		GiftCardspage giftCard = new GiftCardspage(driver);
 		//click on gift cards
 		giftCard.clickOnGiftCards();
-		//select list from the dropdown
-		giftCard.selectClick(list);
 		
 	}
 
 	@Then("It should be changed to list")
 	public void it_should_be_changed_to_list() {
 	  
-		GiftCardspage giftCard = new GiftCardspage(driver);
+		GiftCardspage giftCard = new GiftCardspage(driver); 
+		GiftCardspage gridHeight =new GiftCardspage(driver);
 		
-		String actAttTag = giftCard.list();
-		Assert.assertEquals("http://demowebshop.tricentis.com/5-virtual-gift-card", actAttTag);
-		
+		//getting the height of first product when it is viewed as grid
+		int actGridHeight = gridHeight.heightOfFirstElementInGrid();
+		//changing to list from grid
+		giftCard.selectList("List");
+		//getting the height of the first product when it is viewed as list
+		int actListHeight = giftCard.heightOfFirstElementInList();
+				
+		//comparing the height of the first product when it is viewed in grid and list
+		Assert.assertEquals("changed from grid to list", actGridHeight, actListHeight);;
 		
 		
 	}

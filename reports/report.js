@@ -414,7 +414,8 @@ formatter.match({
   "location": "com.cts.stepdefinitions.StepDefinition.it_should_be_changed_to_list()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError: changed from grid to list expected:\u003c280\u003e but was:\u003c145\u003e\r\n\tat org.junit.Assert.fail(Assert.java:89)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:835)\r\n\tat org.junit.Assert.assertEquals(Assert.java:647)\r\n\tat com.cts.stepdefinitions.StepDefinition.it_should_be_changed_to_list(StepDefinition.java:260)\r\n\tat ✽.It should be changed to list(file:///D:/SeleniumProject/DemoWorkShopProject2/src/main/resources/feature/demo.feature:41)\r\n",
+  "status": "failed"
 });
 formatter.after({
   "status": "passed"
@@ -457,7 +458,8 @@ formatter.match({
   "location": "com.cts.stepdefinitions.StepDefinition.it_should_be_changed_to_list()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError: changed from grid to list expected:\u003c280\u003e but was:\u003c145\u003e\r\n\tat org.junit.Assert.fail(Assert.java:89)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:835)\r\n\tat org.junit.Assert.assertEquals(Assert.java:647)\r\n\tat com.cts.stepdefinitions.StepDefinition.it_should_be_changed_to_list(StepDefinition.java:260)\r\n\tat ✽.It should be changed to list(file:///D:/SeleniumProject/DemoWorkShopProject2/src/main/resources/feature/demo.feature:41)\r\n",
+  "status": "failed"
 });
 formatter.after({
   "status": "passed"
