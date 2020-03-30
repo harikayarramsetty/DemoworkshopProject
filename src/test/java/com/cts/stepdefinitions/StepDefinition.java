@@ -219,8 +219,8 @@ public class StepDefinition {
 
 
 	//5th scenario
-	@When("I enter username as {string} and password as {string} and I go to gift cards change the view as to {string}")
-	public void i_enter_username_as_and_password_as_and_I_go_to_gift_cards_change_the_view_as_to(String username, String password, String list) {
+	@When("I enter username as {string} and password as {string} and click on giftcards")
+	public void i_enter_username_as_and_password_as_and_click_on_giftcards(String username, String password) {
 		LoginPage login = new LoginPage(driver);
 		//click on login
 		login.clickOnLogin();
@@ -237,23 +237,25 @@ public class StepDefinition {
 		
 	}
 
-	@Then("It should be changed to list")
-	public void it_should_be_changed_to_list() {
-	  
+	@Then("I sort grid to {string}")
+	public void i_sort_grid_to(String list) {
 		GiftCardspage giftCard = new GiftCardspage(driver); 
-		GiftCardspage gridHeight =new GiftCardspage(driver);
+		GiftCardspage heightOfItem = new GiftCardspage(driver);
 		
 		//getting the height of first product when it is viewed as grid
-		int actGridHeight = gridHeight.heightOfFirstElementInGrid();
+		int actGridHeight = heightOfItem.heightOfFirstElement();
+		
 		//changing to list from grid
-		giftCard.selectList("List");
+		giftCard.selectList(list);
+		
 		//getting the height of the first product when it is viewed as list
-		int actListHeight = giftCard.heightOfFirstElementInList();
+		int actListHeight = heightOfItem.heightOfFirstElement();
 				
 		//comparing the height of the first product when it is viewed in grid and list
-		Assert.assertEquals("changed from grid to list", actGridHeight, actListHeight);;
-		
-		
+		//Assert.assertEquals("changed from grid to list", actGridHeight, actListHeight);
+		boolean check = actGridHeight!=actListHeight;
+		Assert.assertTrue("Not changed from grid to list", check);
+		 
 	}
 	
 }

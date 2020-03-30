@@ -344,11 +344,11 @@ formatter.scenarioOutline({
   "keyword": "Scenario Outline"
 });
 formatter.step({
-  "name": "I enter username as \u0027\u003cusername\u003e\u0027 and password as \u0027\u003cpassword\u003e\u0027 and I go to gift cards change the view as to \u0027List\u0027",
+  "name": "I enter username as \u0027\u003cusername\u003e\u0027 and password as \u0027\u003cpassword\u003e\u0027 and click on giftcards",
   "keyword": "When "
 });
 formatter.step({
-  "name": "It should be changed to list",
+  "name": "I sort grid to \u0027List\u0027",
   "keyword": "Then "
 });
 formatter.examples({
@@ -397,25 +397,24 @@ formatter.scenario({
   "keyword": "Scenario Outline"
 });
 formatter.step({
-  "name": "I enter username as \u0027mohithayarramsetty@gmail.com\u0027 and password as \u0027yarramsetty\u0027 and I go to gift cards change the view as to \u0027List\u0027",
+  "name": "I enter username as \u0027mohithayarramsetty@gmail.com\u0027 and password as \u0027yarramsetty\u0027 and click on giftcards",
   "keyword": "When "
 });
 formatter.match({
-  "location": "com.cts.stepdefinitions.StepDefinition.i_enter_username_as_and_password_as_and_I_go_to_gift_cards_change_the_view_as_to(java.lang.String,java.lang.String,java.lang.String)"
+  "location": "com.cts.stepdefinitions.StepDefinition.i_enter_username_as_and_password_as_and_click_on_giftcards(java.lang.String,java.lang.String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "It should be changed to list",
+  "name": "I sort grid to \u0027List\u0027",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "com.cts.stepdefinitions.StepDefinition.it_should_be_changed_to_list()"
+  "location": "com.cts.stepdefinitions.StepDefinition.i_sort_grid_to(java.lang.String)"
 });
 formatter.result({
-  "error_message": "java.lang.AssertionError: changed from grid to list expected:\u003c280\u003e but was:\u003c145\u003e\r\n\tat org.junit.Assert.fail(Assert.java:89)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:835)\r\n\tat org.junit.Assert.assertEquals(Assert.java:647)\r\n\tat com.cts.stepdefinitions.StepDefinition.it_should_be_changed_to_list(StepDefinition.java:260)\r\n\tat ✽.It should be changed to list(file:///D:/SeleniumProject/DemoWorkShopProject2/src/main/resources/feature/demo.feature:41)\r\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.after({
   "status": "passed"
@@ -441,25 +440,24 @@ formatter.scenario({
   "keyword": "Scenario Outline"
 });
 formatter.step({
-  "name": "I enter username as \u0027trustxd@gmail.com\u0027 and password as \u0027trustXD\u0027 and I go to gift cards change the view as to \u0027List\u0027",
+  "name": "I enter username as \u0027trustxd@gmail.com\u0027 and password as \u0027trustXD\u0027 and click on giftcards",
   "keyword": "When "
 });
 formatter.match({
-  "location": "com.cts.stepdefinitions.StepDefinition.i_enter_username_as_and_password_as_and_I_go_to_gift_cards_change_the_view_as_to(java.lang.String,java.lang.String,java.lang.String)"
+  "location": "com.cts.stepdefinitions.StepDefinition.i_enter_username_as_and_password_as_and_click_on_giftcards(java.lang.String,java.lang.String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "It should be changed to list",
+  "name": "I sort grid to \u0027List\u0027",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "com.cts.stepdefinitions.StepDefinition.it_should_be_changed_to_list()"
+  "location": "com.cts.stepdefinitions.StepDefinition.i_sort_grid_to(java.lang.String)"
 });
 formatter.result({
-  "error_message": "java.lang.AssertionError: changed from grid to list expected:\u003c280\u003e but was:\u003c145\u003e\r\n\tat org.junit.Assert.fail(Assert.java:89)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:835)\r\n\tat org.junit.Assert.assertEquals(Assert.java:647)\r\n\tat com.cts.stepdefinitions.StepDefinition.it_should_be_changed_to_list(StepDefinition.java:260)\r\n\tat ✽.It should be changed to list(file:///D:/SeleniumProject/DemoWorkShopProject2/src/main/resources/feature/demo.feature:41)\r\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.after({
   "status": "passed"

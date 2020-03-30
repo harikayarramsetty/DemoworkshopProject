@@ -9,8 +9,7 @@ public class GiftCardspage {
 	
 	private By giftCardsLoc = By.xpath("(//a[contains(text(),'Gift Cards')])[1]");
 	private By listLoc = By.id("products-viewmode");
-	private By gridHeightLoc = By.xpath("(//div[@class='item-box'])[1]");
-	private By listHeightLoc = By.xpath("(//div[@class='item-box'])[1]");
+	private By itemLoc = By.xpath("(//div[@class='item-box'])[1]");
 	
 	private WebDriver driver;
 	public GiftCardspage(WebDriver driver)
@@ -23,12 +22,12 @@ public class GiftCardspage {
 		driver.findElement(giftCardsLoc).click();
 	}
 	
-	public int heightOfFirstElementInGrid()
+	public int heightOfFirstElement()
 	{
-		WebElement item1 = driver.findElement(gridHeightLoc);
-		int height1 = item1.getSize().getHeight();
-		System.out.println(height1);
-		return height1;
+		WebElement item = driver.findElement(itemLoc);
+		int height = item.getSize().getHeight();
+		System.out.println(height);
+		return height;
 	}
 	
 	
@@ -37,15 +36,6 @@ public class GiftCardspage {
 		Select viewSelect = new Select(driver.findElement(listLoc));
 		viewSelect.selectByVisibleText(list);
 	}
-	
-	public int heightOfFirstElementInList()
-	{
-		WebElement listItem1 = driver.findElement(listHeightLoc);
-		int listHeight1 = listItem1.getSize().getHeight();
-		System.out.println(listHeight1);
-		return listHeight1;
-	}
-	
 	
 	
 }

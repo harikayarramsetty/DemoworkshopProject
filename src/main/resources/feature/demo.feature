@@ -37,8 +37,8 @@ Examples:
 
 
 Scenario Outline: View as list
-When I enter username as '<username>' and password as '<password>' and I go to gift cards change the view as to 'List'
-Then It should be changed to list      
+When I enter username as '<username>' and password as '<password>' and click on giftcards
+Then I sort grid to 'List'  
 Examples: 
 |username|password|
 |mohithayarramsetty@gmail.com|yarramsetty|
